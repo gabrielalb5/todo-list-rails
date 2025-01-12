@@ -2,13 +2,13 @@
 
 <%= render @list %>
 <% @tarefas.each do |tarefa| %>
-  <p><%= tarefa.name %></p>
-
-  <%= form_for tarefa do |t| %>
-    <%= t.check_box :done, :value => tarefa.done %>
-    <%= t.submit "Concluir" %>
+  <% if tarefa.done %>
+    <s><p><%= tarefa.name %></p></s>
+    <%= button_to "Refazer", toggle_done_task_path(tarefa), method: :patch %>
+  <% else %>
+    <p><%= tarefa.name %></p>
+    <%= button_to "Concluir", toggle_done_task_path(tarefa), method: :patch %>
   <% end %>
-
 <% end %>
 
 <%= form_for @task do |t| %>

@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   def create
     @task = Task.create(task_params)
+    @task.done = false
 
     if @task.save
       redirect_to list_path(@task.list_id)
@@ -16,6 +17,16 @@ class TasksController < ApplicationController
       redirect_to list_path(@task.list_id)
     else
       redirect_to root_path
+    end
+  end
+
+  def toggle_done
+    @task = Task.find(params[:id])
+    @task.done = !@task.done
+    if @task.save
+      redirect_to list_path(@task.list_id), notice: "Tarefa atualizada com sucesso."
+    else
+      redirect_to root_path, alert: "Falha ao atualizar a tarefa."
     end
   end
 
