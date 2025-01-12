@@ -9,6 +9,9 @@
     <p><%= tarefa.name %></p>
     <%= button_to "Concluir", toggle_done_task_path(tarefa), method: :patch %>
   <% end %>
+
+  <!-- Botão para deletar a tarefa -->
+  <%= button_to "Deletar", task_path(tarefa), method: :delete %>
 <% end %>
 
 <%= form_for @task do |t| %>

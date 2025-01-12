@@ -30,6 +30,13 @@ class TasksController < ApplicationController
     end
   end
 
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+
+    redirect_to list_path(@task.list_id), notice: "Tarefa deletada com sucesso."
+  end
+
   private
   def task_params
     params.require(:task).permit(:name, :done, :list_id)
