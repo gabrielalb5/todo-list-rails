@@ -1,11 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @list %>
+<% @tarefas.each do |tarefa| %>
+  <p><%= tarefa.name %></p>
+
+  <%= form_for tarefa do |t| %>
+    <%= t.check_box :done, :value => tarefa.done %>
+    <%= t.submit "Concluir" %>
+  <% end %>
+
+<% end %>
 
 <%= form_for @task do |t| %>
   <p><%= t.text_field :name %></p>
-  <%= t.check_box :done %>
-  <%= t.number_field :list_id, :value => @list.id %>
+  <%= t.hidden_field :list_id, :value => @list.id %>
   <%= t.submit "Adicionar tarefa" %>
 <% end %>
 

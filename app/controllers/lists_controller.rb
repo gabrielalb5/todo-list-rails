@@ -9,6 +9,7 @@ class ListsController < ApplicationController
   # GET /lists/1 or /lists/1.json
   def show
     @task = Task.new
+    @tarefas = @list.tasks
   end
 
   # GET /lists/new
