@@ -1,28 +1,37 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @list %>
+<h2><%= render @list %></h2>
+<% content_for :title, @list.title+" | Listas" %>
+
+<main>
+<table>
+  <tbody>
+  <tr>
 <% @tarefas.each do |tarefa| %>
   <% if tarefa.done %>
-    <s><p><%= tarefa.name %></p></s>
-    <%= button_to "Refazer", toggle_done_task_path(tarefa), method: :patch %>
+    <td class="item"><s><%= tarefa.name %></s></td>
+    <td class="btn_done_blue"><%= button_to "Refazer", toggle_done_task_path(tarefa), method: :patch %></td>
   <% else %>
-    <p><%= tarefa.name %></p>
-    <%= button_to "Concluir", toggle_done_task_path(tarefa), method: :patch %>
+    <td class="item"><%= tarefa.name %></td>
+    <td class="btn_done"><%= button_to "Concluir", toggle_done_task_path(tarefa), method: :patch %></td>
   <% end %>
-
-  <!-- Botão para deletar a tarefa -->
-  <%= button_to "Deletar", task_path(tarefa), method: :delete %>
+  <td><%= button_to "Deletar", task_path(tarefa), method: :delete %></td>
+  </tr>
 <% end %>
+  </tbody>
+</table>
 
-<%= form_for @task do |t| %>
-  <p><%= t.text_field :name %></p>
+<%= form_for @task, html: { id: 'add_form' } do |t| %>
+  <p><%= t.text_field :name, placeholder: "Digite um tópico/item/tarefa" %></p>
   <%= t.hidden_field :list_id, :value => @list.id %>
-  <%= t.submit "Adicionar tarefa" %>
+  <%= button_tag type: 'submit', class: 'btn_add' do %>
+    Adicionar à lista <span class="material-symbols-outlined">add</span>
+  <% end %>
 <% end %>
+</main>
 
 <div>
-  <%= link_to "Edit this list", edit_list_path(@list) %> |
-  <%= link_to "Back to lists", lists_path %>
-
-  <%= button_to "Destroy this list", @list, method: :delete %>
+  <%= link_to "Editar lista", edit_list_path(@list) %>
+  <%= link_to "Voltar ao início", lists_path %>
+  <%= button_to "Excluir lista", @list, method: :delete %>
 </div>

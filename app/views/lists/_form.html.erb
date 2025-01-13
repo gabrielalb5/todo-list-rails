@@ -12,11 +12,11 @@
   <% end %>
 
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.label "Nome", style: "display: none" %>
+    <%= form.text_field :title, placeholder: "Nome" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Confirmar" %>
   </div>
 <% end %>

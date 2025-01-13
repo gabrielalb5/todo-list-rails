@@ -1,16 +1,24 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Lists" %>
-
-<h1>Lists</h1>
-
-<div id="lists">
+<% content_for :title, "Listas" %>
+<h1>Listas</h1>
+<main id="lists">
+  
   <% @lists.each do |list| %>
+  <div class="list">
     <%= render list %>
     <p>
-      <%= link_to "Show this list", list %>
+      <%= link_to list do %>
+        ver conteúdo<span class="material-symbols-outlined">arrow_forward</span>
+      <% end %>
     </p>
+  </div>
   <% end %>
-</div>
 
-<%= link_to "New list", new_list_path %>
+  <%= link_to new_list_path, class: "btn_submit" do %>
+    <span class="material-symbols-outlined">add</span> Nova lista
+  <% end %>
+</main>
+<section>
+  <img src="/todo.png" alt="rss feed" />
+</section>
