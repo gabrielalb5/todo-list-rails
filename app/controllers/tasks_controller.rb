@@ -5,8 +5,6 @@ class TasksController < ApplicationController
 
     if @task.save
       redirect_to list_path(@task.list_id)
-    else
-      redirect_to root_path
     end
   end
 
