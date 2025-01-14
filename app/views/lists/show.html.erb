@@ -2,36 +2,46 @@
 
 <h2><%= render @list %></h2>
 <% content_for :title, @list.title+" | Listas" %>
+<%= button_to "Excluir lista", @list, method: :delete, class: "btn_delete_list" %>
 
-<main>
+<main id="list_page">
+
+<%= form_for @task, html: { id: 'add_form' } do |t| %>
+  <%= t.text_field :name, placeholder: "Digite um tópico/item/tarefa" %>
+  <%= t.hidden_field :list_id, :value => @list.id %>
+  <%= button_tag type: 'submit', class: 'btn_add' do %>
+    <span class="material-symbols-outlined">add</span>
+  <% end %>
+<% end %>
+
 <table>
   <tbody>
   <tr>
 <% @tarefas.each do |tarefa| %>
   <% if tarefa.done %>
+    <td class="done_icon"><span class="material-symbols-outlined">check</span></td>
     <td class="item"><s><%= tarefa.name %></s></td>
-    <td class="btn_done_blue"><%= button_to "Refazer", toggle_done_task_path(tarefa), method: :patch %></td>
+    <td><%= button_to "Refazer", toggle_done_task_path(tarefa), method: :patch, class: "btn_done" %></td>
   <% else %>
+    <td></td>
     <td class="item"><%= tarefa.name %></td>
-    <td class="btn_done"><%= button_to "Concluir", toggle_done_task_path(tarefa), method: :patch %></td>
+    <td><%= button_to "Concluir", toggle_done_task_path(tarefa), method: :patch, class: "btn_done" %></td>
   <% end %>
-  <td><%= button_to "Deletar", task_path(tarefa), method: :delete %></td>
+  <td><%= button_to task_path(tarefa), method: :delete, class: "btn_deletar" do %>
+        <span class="material-symbols-outlined">delete</span>
+      <% end %>
+  </td>
   </tr>
 <% end %>
   </tbody>
 </table>
-
-<%= form_for @task, html: { id: 'add_form' } do |t| %>
-  <p><%= t.text_field :name, placeholder: "Digite um tópico/item/tarefa" %></p>
-  <%= t.hidden_field :list_id, :value => @list.id %>
-  <%= button_tag type: 'submit', class: 'btn_add' do %>
-    Adicionar à lista <span class="material-symbols-outlined">add</span>
-  <% end %>
-<% end %>
 </main>
 
-<div>
-  <%= link_to "Editar lista", edit_list_path(@list) %>
-  <%= link_to "Voltar ao início", lists_path %>
-  <%= button_to "Excluir lista", @list, method: :delete %>
+<div class="links">
+  <%= link_to edit_list_path(@list), class: "link-class" do %>
+    <span class="material-symbols-outlined">settings</span> Editar lista
+  <% end %>
+  <%= link_to lists_path do %>
+    <span class="material-symbols-outlined">home</span> Voltar ao início
+  <% end %>
 </div>

@@ -32,7 +32,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.destroy
 
-    redirect_to list_path(@task.list_id), notice: "Tarefa deletada com sucesso."
+    redirect_to list_path(@task.list_id), notice: "Tarefa excluída com sucesso."
   end
 
   private

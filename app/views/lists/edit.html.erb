@@ -1,12 +1,14 @@
 <% content_for :title, "Editando lista" %>
 
 <h1>Editando lista</h1>
-
+<main id="new">
 <%= render "form", list: @list %>
-
-<br>
-
-<div>
-  <%= link_to "Acessar lista", @list %>
-  <%= link_to "Voltar ao início", lists_path %>
+</main>
+<div class="links">
+  <%= link_to @list do %>
+    <span class="material-symbols-outlined">visibility</span> Acessar lista
+  <% end %>
+  <%= link_to lists_path do %>
+    <span class="material-symbols-outlined">home</span> Voltar ao início
+  <% end %>
 </div>

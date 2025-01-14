@@ -31,7 +31,7 @@ body{
     background-color: rgb(75, 128, 161);
     color: rgb(255, 255, 255);
     margin: 10px 0;
-    width: 300px;
+    border: none;
 }
 section img{
     width: 300px;
@@ -40,11 +40,13 @@ form input[type="text"]{
     padding: 20px;
     border: 2px solid rgb(200, 200, 200);
     border-radius: 5px 0 0 5px;
-    width: 200px;
+    width: 100%;
 }
-#add_form{
+.new_task{
     display: flex;
     align-items: center;
+    width: 100%;
+    margin: 10px 0;
 }
 .btn_add{
     padding: 20px;
@@ -54,7 +56,6 @@ form input[type="text"]{
     border: none;
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 h2{
     margin: 0;
@@ -63,5 +64,81 @@ table{
     width: 100%;
 }
 .item{
-    padding: 0 100px 0 0;
+    width: 100%;
+    padding: 0 50px 0 0;
+}
+.done_icon{
+    padding: 0 10px 0 0;
+    color: rgb(75, 128, 161);
+}
+.done_icon span{
+    font-weight: 800;
+    margin: 5px 0 0 0;
+}
+.btn_deletar:hover{
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.btn_done:hover{
+    cursor: pointer;
+    background-color: rgb(200, 200, 200);
+    color: black;
+    transition: 0.5s;
+}
+.btn_deletar, .btn_done{
+    padding: 10px;
+    min-height: 50px;
+    border: none;
+}
+.btn_done{
+    min-width: 80px
+}
+#new form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#new form .btn_submit{
+    width: 100%;
+}
+#new form input[type="text"]{
+    width: 80%;
+}
+#add_form{
+    margin-bottom: 30px;
+}
+#list_page{
+    min-width: 300px;
+}
+.btn_delete_list{
+    text-decoration: none;
+    color: rgb(200, 200, 200);
+    margin: 0 0 30px 0;
+    border: none;
+    background-color: #ffffff;
+}
+.links a{
+    text-decoration: none;
+    color: rgb(200, 200, 200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.links a:hover{
+    opacity: 80%;
+}
+.links{
+    gap: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+.btn_add:hover, .btn_delete_list:hover, .btn_submit:hover{
+    opacity: 80%;
+    cursor: pointer;
 }

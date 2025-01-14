@@ -1,11 +1,11 @@
 <% content_for :title, "Nova lista" %>
 
 <h1>Nova lista</h1>
-
+<main id="new">
 <%= render "form", list: @list %>
-
-<br>
-
-<div>
-  <%= link_to "Voltar ao início", lists_path %>
+</main>
+<div class="links">
+  <%= link_to lists_path do %>
+    <span class="material-symbols-outlined">home</span> Voltar ao início
+  <% end %>
 </div>
