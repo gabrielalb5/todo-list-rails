@@ -11,3 +11,8 @@ Este projeto é um instrumento de estudo do framework Ruby on Rails, focado no d
 
 ## Tecnologias
 💎 Ruby 3.3.6 |🚆 Rails 8.0.1 | 🪶 SQLite
+
+## Telas
+
+<img src="https://github.com/user-attachments/assets/bdf0e1f7-ee8e-47ee-8c91-d67bff2d9d10" width=250>
+<img src="https://github.com/user-attachments/assets/2ff5a9c0-f287-4927-98c4-a4a1d6f71a94" width=250>
